@@ -39,35 +39,29 @@ header{position:sticky;top:0;z-index:100;background:rgba(13,17,23,0.95);backdrop
 .prog{max-width:1600px;margin:0 auto;padding:0 1.5rem 10px;}
 #pbar{height:2px;background:var(--accent);width:0%;transition:width .3s;}
 
+/* iki ayrı tablo sarmalayıcı */
 .twrap{max-width:1600px;margin:0 auto;padding:0 1.5rem 3rem;overflow-x:auto;}
-table{width:100%;border-collapse:collapse;min-width:1200px;table-layout:fixed;}
 
-/* Her gün bloğunun başlangıcına kalın dikey çizgi */
+/* METRO TABLOSU – 4 gün */
+#tbl-metro{width:100%;border-collapse:collapse;min-width:900px;table-layout:fixed;}
+/* DİĞER TABLO – bugün + yarın yük */
+#tbl-other{width:100%;border-collapse:collapse;min-width:600px;table-layout:fixed;}
+
 .day-sep{border-left:3px solid var(--border-thick) !important;}
 
-/* Gruplar arası kalın yatay çizgi satırı */
 tr.group-sep td{
   border-top:3px solid var(--border-thick) !important;
-  height:6px;
-  padding:0;
-  background:var(--bg);
+  height:6px;padding:0;background:var(--bg);
 }
 
 thead tr.row-days th{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:14px;
-  padding:12px 6px;
-  text-align:center;
-  background:var(--bg);
+  font-family:'IBM Plex Mono',monospace;font-size:14px;padding:12px 6px;
+  text-align:center;background:var(--bg);
 }
 thead tr.row-labels th{
-  font-size:12px;
-  color:var(--dim);
-  text-transform:uppercase;
-  padding-bottom:10px;
-  border-bottom:2px solid var(--border-thick);
-  text-align:center;
-  background:var(--bg);
+  font-size:12px;color:var(--dim);text-transform:uppercase;
+  padding-bottom:10px;border-bottom:2px solid var(--border-thick);
+  text-align:center;background:var(--bg);
 }
 
 td{padding:11px 6px;border-bottom:1px solid var(--border);vertical-align:middle;text-align:center;}
@@ -76,93 +70,58 @@ td{padding:11px 6px;border-bottom:1px solid var(--border);vertical-align:middle;
 
 .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:4px 8px;border-radius:5px;background:rgba(255,255,255,0.05);white-space:normal;text-align:left;max-width:240px;line-height:1.4;}
 .badge .w-ico{font-size:39px;line-height:1;flex-shrink:0;}
-.val-ico{font-size:42px;line-height:1;vertical-align:middle;}
+.val-ico{font-size:32px;line-height:1;vertical-align:middle;}
 .val-hi{color:var(--hi);font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;}
 .val-lo{color:var(--lo);font-family:'IBM Plex Mono',monospace;font-size:15px;}
+.val-hi-only{color:var(--hi);font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;}
 
 .sep-row td{
-  background:rgba(124,58,237,0.08);
-  font-weight:700;
-  font-size:12px;
-  color:var(--accent);
-  text-transform:uppercase;
-  text-align:left;
-  padding:7px 10px;
-  letter-spacing:0.08em;
-  border-bottom:1px solid var(--border);
+  background:rgba(124,58,237,0.08);font-weight:700;font-size:12px;
+  color:var(--accent);text-transform:uppercase;text-align:left;
+  padding:7px 10px;letter-spacing:0.08em;border-bottom:1px solid var(--border);
+}
+.metro-sep-row td{
+  background:rgba(249,115,22,0.08);font-weight:700;font-size:12px;
+  color:var(--hi);text-transform:uppercase;text-align:left;
+  padding:7px 10px;letter-spacing:0.08em;border-bottom:1px solid var(--border);
 }
 
 .loading-cell{color:var(--dim);font-size:14px;}
 
-/* ── Veri Kaynağı Göstergesi ── */
-.src-bar{
-  max-width:1500px;margin:0 auto;padding:0.5rem 1.5rem;
-  display:flex;align-items:center;gap:10px;
-  border-bottom:1px solid var(--border);
-}
-.src-indicator{
-  display:flex;align-items:center;gap:8px;
-  font-size:14px;color:var(--muted);flex:1;
-}
-.src-dot{
-  width:10px;height:10px;border-radius:50%;flex-shrink:0;
-  box-shadow:0 0 0 2px rgba(255,255,255,0.05);
-}
-.src-dot.api   { background:#4ade80; box-shadow:0 0 6px rgba(74,222,128,.5); animation:pulse 2.5s infinite; }
-.src-dot.file  { background:#a78bfa; box-shadow:0 0 6px rgba(167,139,250,.4); }
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-
-.src-indicator strong{ color:var(--text); font-weight:600; }
-.src-indicator .src-fname{
+.section-title{
+  max-width:1600px;margin:0 auto;padding:1.2rem 1.5rem 0.4rem;
   font-family:'IBM Plex Mono',monospace;font-size:13px;
-  color:var(--accent);background:rgba(124,58,237,.12);
-  padding:2px 7px;border-radius:3px;
+  color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;
+  border-top:1px solid var(--border);
 }
 
-.io-btn.reset{
-  border-color:rgba(248,113,113,.35);color:#f87171;
-  font-size:13px;padding:5px 12px;
-}
+/* Veri Kaynağı */
+.src-bar{max-width:1500px;margin:0 auto;padding:0.5rem 1.5rem;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.src-indicator{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);flex:1;}
+.src-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,0.05);}
+.src-dot.api{background:#4ade80;box-shadow:0 0 6px rgba(74,222,128,.5);animation:pulse 2.5s infinite;}
+.src-dot.file{background:#a78bfa;box-shadow:0 0 6px rgba(167,139,250,.4);}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.src-indicator strong{color:var(--text);font-weight:600;}
+.src-indicator .src-fname{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);background:rgba(124,58,237,.12);padding:2px 7px;border-radius:3px;}
+.io-btn.reset{border-color:rgba(248,113,113,.35);color:#f87171;font-size:13px;padding:5px 12px;}
 .io-btn.reset:hover{background:rgba(248,113,113,.08);}
 
-/* ── Import / Export Toolbar ── */
-.io-bar{
-  max-width:1600px;margin:0 auto;padding:0.7rem 1.5rem 0.9rem;
-  display:flex;align-items:center;flex-wrap:wrap;gap:8px;
-}
+/* Import/Export */
+.io-bar{max-width:1600px;margin:0 auto;padding:0.7rem 1.5rem 0.9rem;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
 .io-section{display:flex;align-items:center;gap:6px;}
 .io-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:2px;}
-.io-btn{
-  display:inline-flex;align-items:center;gap:5px;
-  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;
-  padding:6px 14px;border-radius:5px;border:1px solid var(--border);
-  background:var(--surface);color:var(--text);cursor:pointer;
-  transition:background .15s,border-color .15s;white-space:nowrap;
-}
+.io-btn{display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;padding:6px 14px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;transition:background .15s,border-color .15s;white-space:nowrap;}
 .io-btn:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.2);}
 .io-btn.imp{border-color:rgba(124,58,237,0.4);color:var(--accent);}
 .io-btn.imp:hover{background:rgba(124,58,237,0.1);}
 .io-btn.exp{border-color:rgba(56,189,248,0.35);color:var(--lo);}
 .io-btn.exp:hover{background:rgba(56,189,248,0.08);}
 .io-sep{width:1px;height:24px;background:var(--border);margin:0 4px;}
-.io-status{
-  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--dim);
-  margin-left:auto;padding:5px 10px;border-radius:4px;
-  background:rgba(255,255,255,0.03);border:1px solid var(--border);
-  min-width:200px;text-align:center;
-}
+.io-status{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--dim);margin-left:auto;padding:5px 10px;border-radius:4px;background:rgba(255,255,255,0.03);border:1px solid var(--border);min-width:200px;text-align:center;}
 .io-status.ok{color:#4ade80;border-color:rgba(74,222,128,.25);}
 .io-status.err{color:#f87171;border-color:rgba(248,113,113,.25);}
-/* Gizli file input */
 #fileInput{display:none;}
-
-/* Veri kaynağı göstergesi */
-.src-badge{
-  font-size:11px;padding:2px 6px;border-radius:3px;
-  font-family:'IBM Plex Mono',monospace;vertical-align:middle;margin-left:4px;
-}
-.src-import{background:rgba(124,58,237,.15);color:var(--accent);}
-.src-api{background:rgba(56,189,248,.1);color:var(--lo);}
 
 footer{text-align:center;padding:2rem;font-size:13px;color:var(--dim);}
 </style>
@@ -179,7 +138,6 @@ footer{text-align:center;padding:2rem;font-size:13px;color:var(--dim);}
 <div class="stats" id="stats"></div>
 <div class="prog"><div id="pbar"></div></div>
 
-<!-- Veri Kaynağı Göstergesi -->
 <div class="src-bar">
   <div class="src-indicator" id="src-indicator">
     <span class="src-dot" id="src-dot"></span>
@@ -188,7 +146,6 @@ footer{text-align:center;padding:2rem;font-size:13px;color:var(--dim);}
   <button class="io-btn reset" id="reset-btn" onclick="resetToAPI()" title="Tüm import verilerini temizle, API'ye dön">↺ Sıfırla</button>
 </div>
 
-<!-- Import / Export Araç Çubuğu -->
 <div class="io-bar">
   <div class="io-section">
     <span class="io-label">İçe Aktar</span>
@@ -207,65 +164,77 @@ footer{text-align:center;padding:2rem;font-size:13px;color:var(--dim);}
   <div id="io-status" class="io-status">API'den veriler yükleniyor…</div>
 </div>
 
+<!-- METRO TABLOSU -->
+<div class="section-title">◈ Metropoller — 4 Günlük Tahmin</div>
 <div class="twrap">
-<table id="tbl">
-  <thead id="thead-wrap"></thead>
-  <tbody id="tbody"></tbody>
+<table id="tbl-metro">
+  <thead id="thead-metro"></thead>
+  <tbody id="tbody-metro"></tbody>
+</table>
+</div>
+
+<!-- DİĞER BÖLGELER TABLOSU -->
+<div class="section-title">◈ Bölgesel — Bugün &amp; Yarın Yük.</div>
+<div class="twrap">
+<table id="tbl-other">
+  <thead id="thead-other"></thead>
+  <tbody id="tbody-other"></tbody>
 </table>
 </div>
 
 <footer>Veriler 5 günlük periyotta güncellenmektedir.</footer>
 
 <script>
-// ════════════════════════════════════════════════════════════════
-//  METEO_TR  —  Import/Export + Open-Meteo API
-// ════════════════════════════════════════════════════════════════
-
-// ── Hava durum kodu → { Türkçe açıklama, simge } ──
+// ══════════════════════════════════════════════
+//  TANIMLAR
+// ══════════════════════════════════════════════
 const COND_TR = {
-  'A':   { label:'Açık',                              icon:'☀️'  },
-  'AB':  { label:'Az Bulutlu',                        icon:'🌤️' },
-  'PB':  { label:'Parçalı Bulutlu',                   icon:'⛅'  },
-  'CB':  { label:'Çok Bulutlu',                       icon:'☁️'  },
-  'SIS': { label:'Sisli',                             icon:'🌫️' },
-  'SİS': { label:'Sisli',                             icon:'🌫️' },
-  'GSY': { label:'Gök Gürültülü Sağanak Yağışlı',     icon:'⛈️'  },
-  'SY':  { label:'Sağanak Yağışlı',                   icon:'🌧️' },
-  'Y':   { label:'Yağmurlu',                          icon:'🌧️' },
-  'HY':  { label:'Hafif Yağmurlu',                    icon:'🌦️' },
-  'KY':  { label:'Karla Karışık Yağmur',              icon:'🌨️' },
-  'KSY': { label:'Kar Sağanağı / Karla Karışık Yağmur', icon:'🌨️' },
-  'HKY': { label:'Hafif Kar Yağışlı',                 icon:'🌨️' },
-  'KKY': { label:'Kuvvetli Kar Yağışlı',              icon:'❄️'  },
-  'K':   { label:'Karlı',                             icon:'❄️'  },
-  'HSY': { label:'Hafif Sağanak Yağışlı',             icon:'🌦️' }
+  'A':   {label:'Açık',                               icon:'☀️'},
+  'AB':  {label:'Az Bulutlu',                         icon:'🌤️'},
+  'PB':  {label:'Parçalı Bulutlu',                    icon:'⛅'},
+  'CB':  {label:'Çok Bulutlu',                        icon:'☁️'},
+  'SIS': {label:'Sisli',                              icon:'🌫️'},
+  'SİS': {label:'Sisli',                              icon:'🌫️'},
+  'GSY': {label:'Gök Gürültülü Sağanak Yağışlı',      icon:'⛈️'},
+  'SY':  {label:'Sağanak Yağışlı',                    icon:'🌧️'},
+  'Y':   {label:'Yağmurlu',                           icon:'🌧️'},
+  'HY':  {label:'Hafif Yağmurlu',                     icon:'🌦️'},
+  'KY':  {label:'Karla Karışık Yağmur',               icon:'🌨️'},
+  'KSY': {label:'Kar Sağanağı / Karla Karışık Yağmur',icon:'🌨️'},
+  'HKY': {label:'Hafif Kar Yağışlı',                  icon:'🌨️'},
+  'KKY': {label:'Kuvvetli Kar Yağışlı',               icon:'❄️'},
+  'K':   {label:'Karlı',                              icon:'❄️'},
+  'HSY': {label:'Hafif Sağanak Yağışlı',              icon:'🌦️'}
+};
+const COND_LABEL_TO_CODE = {};
+Object.entries(COND_TR).forEach(([code,v])=>{COND_LABEL_TO_CODE[v.label.toUpperCase()]=code;});
+function condInfo(code){
+  const k=(code?.toUpperCase?.())||'';
+  if(COND_TR[k]) return COND_TR[k];
+  const mapped=COND_LABEL_TO_CODE[k];
+  if(mapped) return COND_TR[mapped];
+  return {label:code||'—',icon:'🌡️'};
+}
+function condLabel(code){return condInfo(code).label;}
+function condIcon(code) {return condInfo(code).icon;}
+
+const DAYS_TR  = ["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
+const MONTHS   = ["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
+const WMO_CODE = {
+  0:'A',1:'AB',2:'PB',3:'CB',45:'SIS',48:'SIS',
+  51:'HY',53:'HY',55:'Y',61:'HY',63:'Y',65:'Y',
+  71:'HKY',73:'HKY',75:'KKY',77:'HKY',
+  80:'SY',81:'SY',82:'GSY',85:'KSY',86:'KSY',
+  95:'GSY',96:'GSY',99:'GSY'
 };
 
-// Uzun açıklama → kısa kod dönüştürme (import için)
-const COND_LABEL_TO_CODE = {};
-Object.entries(COND_TR).forEach(([code, v]) => {
-  COND_LABEL_TO_CODE[v.label.toUpperCase()] = code;
-});
-
-function condInfo(code){
-  const k = code?.toUpperCase?.() || '';
-  // Önce direkt kodu dene
-  if(COND_TR[k]) return COND_TR[k];
-  // Uzun metin olabilir (import'tan gelen)
-  const mapped = COND_LABEL_TO_CODE[k];
-  if(mapped) return COND_TR[mapped];
-  return { label: code || '—', icon: '🌡️' };
-}
-function condLabel(code){ return condInfo(code).label; }
-function condIcon(code) { return condInfo(code).icon; }
-
-// ── Şehir listesi ──
-const GROUPS = [
-  {sep:"Metropoller",cities:[
-    {name:"İstanbul",  lat:41.015, lon:28.979},
-    {name:"Ankara",    lat:39.920, lon:32.854},
-    {name:"Diyarbakır",lat:37.910, lon:40.237}
-  ]},
+// ── Gruplar ──
+const METRO_GROUP = {sep:"Metropoller", cities:[
+  {name:"İstanbul",  lat:41.015, lon:28.979},
+  {name:"Ankara",    lat:39.920, lon:32.854},
+  {name:"Diyarbakır",lat:37.910, lon:40.237}
+]};
+const OTHER_GROUPS = [
   {sep:"Ege Bölgesi",cities:[
     {name:"İzmir",          lat:38.423, lon:27.143},
     {name:"Muğla",          lat:37.215, lon:28.363},
@@ -343,21 +312,11 @@ const GROUPS = [
   ]}
 ];
 
-const ALL = [];
-GROUPS.forEach(g => g.cities.forEach(c => ALL.push({...c, _g:g})));
-const key = c => `${c.lat}_${c.lon}`;
-
-const DAYS_TR = ["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
-const MONTHS  = ["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
-
-// ── WMO kodu → kısa kod (API modu için) ──
-const WMO_CODE = {
-  0:'A',1:'AB',2:'PB',3:'CB',45:'SIS',48:'SIS',
-  51:'HY',53:'HY',55:'Y',61:'HY',63:'Y',65:'Y',
-  71:'HKY',73:'HKY',75:'KKY',77:'HKY',
-  80:'SY',81:'SY',82:'GSY',85:'KSY',86:'KSY',
-  95:'GSY',96:'GSY',99:'GSY'
-};
+const METRO_CITIES = METRO_GROUP.cities;
+const OTHER_CITIES = [];
+OTHER_GROUPS.forEach(g=>g.cities.forEach(c=>OTHER_CITIES.push({...c,_g:g})));
+const ALL = [...METRO_CITIES.map(c=>({...c,_g:METRO_GROUP})), ...OTHER_CITIES];
+const key = c=>`${c.lat}_${c.lon}`;
 
 // ── STATE ──
 const DATA = {};
@@ -366,142 +325,188 @@ let IMPORT_DATES  = null;
 let IMPORT_SOURCE = 'api';
 let IMPORT_FNAME  = null;
 
-// ════════════════════════════════════════════════════════════════
-//  THEAD
-// ════════════════════════════════════════════════════════════════
-function getDayLabels(){
-  const labels = [];
-  for(let i=0;i<5;i++){
-    const d = new Date(); d.setDate(d.getDate()+i);
+// ══════════════════════════════════════════════
+//  THEAD — METRO (4 gün: bugün + 3)
+// ══════════════════════════════════════════════
+function getDayLabels(count){
+  const labels=[];
+  for(let i=0;i<count;i++){
+    const d=new Date(); d.setDate(d.getDate()+i);
     labels.push({
-      short: i===0?'Bugün':i===1?'Yarın':DAYS_TR[d.getDay()],
-      date: d.getDate()+' '+MONTHS[d.getMonth()]
+      short:i===0?'Bugün':i===1?'Yarın':DAYS_TR[d.getDay()],
+      date:d.getDate()+' '+MONTHS[d.getMonth()]
     });
   }
   return labels;
 }
 
-function buildThead(labels){
-  if(!labels) labels = getDayLabels();
-  let r1 = `<tr class="row-days">
+function buildTheadMetro(labels){
+  if(!labels) labels=getDayLabels(4);
+  // Sütun: #, Şehir, Durum, sonra 4 gün (ilk gün: yük+düş, diğerleri: yük+ikon+düş)
+  let r1=`<tr class="row-days">
     <th style="width:36px">#</th>
-    <th style="width:140px;text-align:left">Şehir</th>
-    <th style="width:210px">Durum</th>`;
-  labels.forEach(l => {
-    r1 += `<th colspan="2" class="day-sep" style="font-weight:600">
-              ${l.short}<br>
-              <span style="font-weight:400;color:var(--dim);font-size:12px">${l.date}</span>
-           </th>`;
+    <th style="width:130px;text-align:left">Şehir</th>
+    <th style="width:190px">Durum</th>`;
+  labels.forEach((l,i)=>{
+    r1+=`<th colspan="2" class="day-sep" style="font-weight:600">
+      ${l.short}<br>
+      <span style="font-weight:400;color:var(--dim);font-size:12px">${l.date}</span>
+    </th>`;
   });
-  r1 += `</tr><tr class="row-labels"><th></th><th></th><th>Durum</th>`;
-  r1 += `<th class="day-sep" style="color:var(--hi)">Yük °C</th><th style="color:var(--lo)">Düş °C</th>`;
-  for(let i=1;i<5;i++) r1 += `<th class="day-sep" colspan="2" style="color:var(--muted)">Yük / Düş °C</th>`;
-  r1 += `</tr>`;
-  document.getElementById('thead-wrap').innerHTML = r1;
+  r1+=`</tr><tr class="row-labels"><th></th><th></th><th>Durum</th>`;
+  // ilk gün: Yük + Düş ayrı sütun
+  r1+=`<th class="day-sep" style="color:var(--hi)">Yük °C</th><th style="color:var(--lo)">Düş °C</th>`;
+  // diğer 3 gün: birleşik sütun
+  for(let i=1;i<4;i++) r1+=`<th class="day-sep" colspan="2" style="color:var(--muted)">Yük / Düş °C</th>`;
+  r1+=`</tr>`;
+  document.getElementById('thead-metro').innerHTML=r1;
 }
 
-function buildTheadFromDates(dates){
-  const MONTHS_= ["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
-  const DAYS_  = ["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
-  const labels = dates.slice(0,5).map(ds => {
-    const [d,m,y] = ds.split('.').map(Number);
-    const dt   = new Date(y, m-1, d);
-    const today= new Date(); today.setHours(0,0,0,0);
-    const diff = Math.round((dt - today)/86400000);
-    return {
-      short: diff===0?'Bugün':diff===1?'Yarın':DAYS_[dt.getDay()],
-      date:  d+' '+MONTHS_[m-1]
-    };
-  });
-  buildThead(labels);
+// ══════════════════════════════════════════════
+//  THEAD — DİĞER (Bugün ikon+yük+düş | Yarın yük)
+// ══════════════════════════════════════════════
+function buildTheadOther(todayLabel, tomorrowLabel){
+  if(!todayLabel){
+    const labs=getDayLabels(2);
+    todayLabel=labs[0]; tomorrowLabel=labs[1];
+  }
+  let r1=`<tr class="row-days">
+    <th style="width:36px">#</th>
+    <th style="width:160px;text-align:left">Şehir</th>
+    <th style="width:190px">Durum</th>
+    <th class="day-sep" style="font-weight:600">
+      ${todayLabel.short}<br>
+      <span style="font-weight:400;color:var(--dim);font-size:12px">${todayLabel.date}</span>
+    </th>
+    <th style="font-weight:600">
+      &nbsp;
+    </th>
+    <th class="day-sep" style="font-weight:600">
+      ${tomorrowLabel.short}<br>
+      <span style="font-weight:400;color:var(--dim);font-size:12px">${tomorrowLabel.date}</span>
+    </th>
+  </tr>
+  <tr class="row-labels">
+    <th></th><th></th><th>Durum</th>
+    <th class="day-sep" style="color:var(--hi)">Yük °C</th>
+    <th style="color:var(--lo)">Düş °C</th>
+    <th class="day-sep" style="color:var(--hi)">Yük °C</th>
+  </tr>`;
+  document.getElementById('thead-other').innerHTML=r1;
 }
 
-// ════════════════════════════════════════════════════════════════
-//  OPEN-METEO API
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+//  API
+// ══════════════════════════════════════════════
 async function fetchCity(city){
-  const k = key(city);
-  try {
-    const url = `https://api.open-meteo.com/v1/forecast`
+  const k=key(city);
+  try{
+    const url=`https://api.open-meteo.com/v1/forecast`
       +`?latitude=${city.lat}&longitude=${city.lon}`
       +`&daily=temperature_2m_max,temperature_2m_min,weathercode`
       +`&forecast_days=5&timezone=auto`;
-    const r = await fetch(url);
-    const j = await r.json();
-    const days = j.daily.time.map((_,i)=>({
-      hi:   Math.round(j.daily.temperature_2m_max[i]),
-      lo:   Math.round(j.daily.temperature_2m_min[i]),
-      code: WMO_CODE[j.daily.weathercode[i]] || 'PB'
+    const r=await fetch(url);
+    const j=await r.json();
+    const days=j.daily.time.map((_,i)=>({
+      hi:Math.round(j.daily.temperature_2m_max[i]),
+      lo:Math.round(j.daily.temperature_2m_min[i]),
+      code:WMO_CODE[j.daily.weathercode[i]]||'PB'
     }));
-    DATA[k] = { ok:true, cond:days[0]?.code||'—', days, source:'api' };
-  } catch(e){
-    DATA[k] = {ok:false};
-  }
+    DATA[k]={ok:true,cond:days[0]?.code||'—',days,source:'api'};
+  }catch(e){DATA[k]={ok:false};}
   done++;
-  document.getElementById('pbar').style.width = (done/ALL.length*100)+'%';
-  if(done===ALL.length){ renderStats(); setStatus('API verisi yüklendi — '+ALL.length+' şehir','ok'); }
-  renderTable();
+  document.getElementById('pbar').style.width=(done/ALL.length*100)+'%';
+  if(done===ALL.length){renderStats();setStatus('API verisi yüklendi — '+ALL.length+' şehir','ok');}
+  renderTables();
 }
 
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 //  RENDER
-// ════════════════════════════════════════════════════════════════
-function renderTable(){
-  let html='', rn=0, lastG=null;
-  for(const city of ALL){
-    if(city._g !== lastG){
-      if(lastG!==null) html+=`<tr class="group-sep"><td colspan="13"></td></tr>`;
-      html+=`<tr class="sep-row"><td colspan="13">${city._g.sep}</td></tr>`;
-      lastG=city._g;
-    }
+// ══════════════════════════════════════════════
+function renderTables(){
+  renderMetro();
+  renderOther();
+}
+
+function renderMetro(){
+  let html='', rn=0;
+  html+=`<tr class="metro-sep-row"><td colspan="11">${METRO_GROUP.sep}</td></tr>`;
+  for(const city of METRO_CITIES){
     rn++;
-    const d = DATA[key(city)];
+    const d=DATA[key(city)];
     if(!d){
       html+=`<tr><td class="rn">${rn}</td><td class="city-cell">${city.name}</td>
-             <td colspan="11" class="loading-cell">Yükleniyor…</td></tr>`;
+             <td colspan="9" class="loading-cell">Yükleniyor…</td></tr>`;
       continue;
     }
-    const condCode  = d.cond || '—';
-    const condFull  = condLabel(condCode);
-    const condIco   = condIcon(condCode);
-    const isImport  = d.source === 'import';
-    const condHtml  = `<span class="badge" title="${condCode}"><span class="w-ico">${condIco}</span>${condFull}</span>`;
+    const condCode =d.cond||'—';
+    const condHtml =`<span class="badge"><span class="w-ico">${condIcon(condCode)}</span>${condLabel(condCode)}</span>`;
 
-    let dayCols='';
-    for(let i=0;i<5;i++){
-      const dy = d.days?.[i];
+    // Gün 0: yük + düş ayrı hücre
+    const d0=d.days?.[0];
+    let dayCols=`<td class="val-hi day-sep">${d0?.hi??'—'}°</td><td class="val-lo">${d0?.lo??'—'}°</td>`;
+
+    // Günler 1–3: ikon ortada, birleşik hücre
+    for(let i=1;i<4;i++){
+      const dy=d.days?.[i];
       if(dy){
-        const dayCode = dy.code || dy.cond || '';
-        const dayIco  = condIcon(dayCode);
-        const dayLbl  = condLabel(dayCode);
-        if(i === 0){
-          // İlk gün: simge yok (zaten Durum sütununda var)
-          dayCols+=`<td class="val-hi day-sep" title="${dayLbl}">${dy.hi ?? '—'}°</td><td class="val-lo">${dy.lo ?? '—'}°</td>`;
-        } else {
-          // Diğer günler: simge iki değerin ortasında, tek hücrede birleşik
-          dayCols+=`<td class="day-sep" colspan="2" style="white-space:nowrap;padding:6px 4px;">
-            <span class="val-hi">${dy.hi ?? '—'}°</span>
-            <span class="val-ico" title="${dayLbl}">${dayIco}</span>
-            <span class="val-lo">${dy.lo ?? '—'}°</span>
-          </td>`;
-        }
+        const ico=condIcon(dy.code||dy.cond||'');
+        const lbl=condLabel(dy.code||dy.cond||'');
+        dayCols+=`<td class="day-sep" colspan="2" style="white-space:nowrap;padding:6px 4px;">
+          <span class="val-hi">${dy.hi??'—'}°</span>
+          <span class="val-ico" title="${lbl}">${ico}</span>
+          <span class="val-lo">${dy.lo??'—'}°</span>
+        </td>`;
       } else {
-        dayCols+=`<td class="day-sep" style="color:var(--dim)">—</td><td style="color:var(--dim)">—</td>`;
+        dayCols+=`<td class="day-sep" style="color:var(--dim)" colspan="2">—</td>`;
       }
     }
     html+=`<tr><td class="rn">${rn}</td><td class="city-cell">${city.name}</td>
            <td>${condHtml}</td>${dayCols}</tr>`;
   }
-  document.getElementById('tbody').innerHTML = html;
+  document.getElementById('tbody-metro').innerHTML=html;
+}
+
+function renderOther(){
+  let html='', rn=0, lastG=null;
+  for(const city of OTHER_CITIES){
+    if(city._g!==lastG){
+      if(lastG!==null) html+=`<tr class="group-sep"><td colspan="6"></td></tr>`;
+      html+=`<tr class="sep-row"><td colspan="6">${city._g.sep}</td></tr>`;
+      lastG=city._g;
+    }
+    rn++;
+    const d=DATA[key(city)];
+    if(!d){
+      html+=`<tr><td class="rn">${rn}</td><td class="city-cell">${city.name}</td>
+             <td colspan="4" class="loading-cell">Yükleniyor…</td></tr>`;
+      continue;
+    }
+    const condCode=d.cond||'—';
+    // Bugün: Durum sütununda ikon+label badge
+    const condHtml=`<span class="badge"><span class="w-ico">${condIcon(condCode)}</span>${condLabel(condCode)}</span>`;
+
+    const d0=d.days?.[0];
+    const d1=d.days?.[1];
+
+    // Bugün yük + düş (Durum sütununa ek iki hücre)
+    const todayCols=`<td class="val-hi day-sep">${d0?.hi??'—'}°</td><td class="val-lo">${d0?.lo??'—'}°</td>`;
+    // Yarın sadece yüksek
+    const tomorrowCol=`<td class="val-hi-only day-sep">${d1?.hi??'—'}°</td>`;
+
+    html+=`<tr><td class="rn">${rn}</td><td class="city-cell">${city.name}</td>
+           <td>${condHtml}</td>${todayCols}${tomorrowCol}</tr>`;
+  }
+  document.getElementById('tbody-other').innerHTML=html;
 }
 
 function renderStats(){
-  const ok = ALL.filter(c=>DATA[key(c)]?.ok && DATA[key(c)].days?.[0]);
+  const ok=ALL.filter(c=>DATA[key(c)]?.ok&&DATA[key(c)].days?.[0]);
   if(!ok.length) return;
-  const maxH = Math.max(...ok.map(c=>DATA[key(c)].days[0].hi));
-  const maxC = ok.find(c=>DATA[key(c)].days[0].hi===maxH);
-  const minL = Math.min(...ok.map(c=>DATA[key(c)].days[0].lo));
-  const minC = ok.find(c=>DATA[key(c)].days[0].lo===minL);
+  const maxH=Math.max(...ok.map(c=>DATA[key(c)].days[0].hi));
+  const maxC=ok.find(c=>DATA[key(c)].days[0].hi===maxH);
+  const minL=Math.min(...ok.map(c=>DATA[key(c)].days[0].lo));
+  const minC=ok.find(c=>DATA[key(c)].days[0].lo===minL);
   document.getElementById('stats').innerHTML=`
     <div class="stat"><div class="stat-lbl">En Yüksek</div>
       <div class="stat-val" style="color:var(--hi)">${maxH}</div>
@@ -511,276 +516,229 @@ function renderStats(){
       <div class="stat-sub">${minC?.name??''}</div></div>
     <div class="stat"><div class="stat-lbl">Şehir Sayısı</div>
       <div class="stat-val">${ok.length}</div></div>`;
-  document.getElementById('upd').textContent =
-    new Date().toLocaleTimeString('tr-TR')+' Güncellendi';
+  document.getElementById('upd').textContent=new Date().toLocaleTimeString('tr-TR')+' Güncellendi';
 }
 
-// ════════════════════════════════════════════════════════════════
-//  KAYNAK GÖSTERGESİ & SIFIRLA
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+//  KAYNAK GÖSTERGESİ
+// ══════════════════════════════════════════════
 function updateSourceIndicator(){
-  const dot = document.getElementById('src-dot');
-  const txt = document.getElementById('src-text');
-  const btn = document.getElementById('reset-btn');
-  if(IMPORT_SOURCE==='file' && IMPORT_FNAME){
-    dot.className  = 'src-dot file';
-    txt.innerHTML  = `Veri kaynağı: <strong>İçe Aktarılan Dosya</strong> — <span class="src-fname">${IMPORT_FNAME}</span>`;
-    btn.style.display = '';
+  const dot=document.getElementById('src-dot');
+  const txt=document.getElementById('src-text');
+  const btn=document.getElementById('reset-btn');
+  if(IMPORT_SOURCE==='file'&&IMPORT_FNAME){
+    dot.className='src-dot file';
+    txt.innerHTML=`Veri kaynağı: <strong>İçe Aktarılan Dosya</strong> — <span class="src-fname">${IMPORT_FNAME}</span>`;
+    btn.style.display='';
   } else {
-    dot.className  = 'src-dot api';
-    txt.innerHTML  = `Veri kaynağı: <strong>Open-Meteo API</strong> <span style="color:var(--dim);font-size:11px">(canlı)</span>`;
-    btn.style.display = 'none';
+    dot.className='src-dot api';
+    txt.innerHTML=`Veri kaynağı: <strong>Open-Meteo API</strong> <span style="color:var(--dim);font-size:11px">(canlı)</span>`;
+    btn.style.display='none';
   }
 }
 
 function resetToAPI(){
   for(const k in DATA) delete DATA[k];
-  IMPORT_DATES = null; IMPORT_SOURCE = 'api'; IMPORT_FNAME = null;
-  done = 0;
-  document.getElementById('fileInput').value = '';
-  buildThead();
-  renderTable();
+  IMPORT_DATES=null; IMPORT_SOURCE='api'; IMPORT_FNAME=null;
+  done=0;
+  document.getElementById('fileInput').value='';
+  buildTheadMetro();
+  buildTheadOther();
+  renderTables();
   updateSourceIndicator();
-  setStatus('API\'den veriler yükleniyor…');
-  document.getElementById('pbar').style.width = '0%';
+  setStatus("API'den veriler yükleniyor…");
+  document.getElementById('pbar').style.width='0%';
   ALL.forEach(fetchCity);
 }
 
-// ════════════════════════════════════════════════════════════════
-//  STATUS
-// ════════════════════════════════════════════════════════════════
-function setStatus(msg, type=''){
-  const el = document.getElementById('io-status');
-  el.textContent = msg;
-  el.className = 'io-status'+(type?' '+type:'');
+function setStatus(msg,type=''){
+  const el=document.getElementById('io-status');
+  el.textContent=msg;
+  el.className='io-status'+(type?' '+type:'');
 }
 
-// ════════════════════════════════════════════════════════════════
-//  IMPORT — Dosya seçimi
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+//  IMPORT
+// ══════════════════════════════════════════════
 function triggerImport(ext){
-  const inp = document.getElementById('fileInput');
-  inp.accept = ext==='xlsx'?'.xlsx':ext==='docx'?'.docx':'.txt';
-  inp.value  = '';
-  inp.click();
+  const inp=document.getElementById('fileInput');
+  inp.accept=ext==='xlsx'?'.xlsx':ext==='docx'?'.docx':'.txt';
+  inp.value=''; inp.click();
 }
 
-document.getElementById('fileInput').addEventListener('change', async function(e){
-  const file = e.target.files[0];
+document.getElementById('fileInput').addEventListener('change',async function(e){
+  const file=e.target.files[0];
   if(!file) return;
-  const name = file.name.toLowerCase();
+  const name=file.name.toLowerCase();
   setStatus('Dosya okunuyor: '+file.name);
-  try {
+  try{
     if(name.endsWith('.txt'))       await importTXT(file);
     else if(name.endsWith('.xlsx')) await importXLSX(file);
     else if(name.endsWith('.docx')) await importDOCX(file);
     else setStatus('Desteklenmeyen dosya türü.','err');
-  } catch(err){
-    setStatus('Hata: '+err.message,'err');
-    console.error(err);
-  }
+  }catch(err){setStatus('Hata: '+err.message,'err');console.error(err);}
 });
 
-// ────────────────────────────────────────────────────────────────
-//  TXT IMPORT
-//  MERKEZLER,06.04.2026,SICAKLIK,07.04.2026,SICAKLIK,...
-//  ISTANBUL,AB,8,16,SY,10,15,...
-// ────────────────────────────────────────────────────────────────
 async function importTXT(file){
-  const text = await file.text();
-  const lines = text.trim().split(/\r?\n/).filter(l=>l.trim());
-  const hdr   = lines[0].split(',');
-
-  // Tarihleri çıkar: sütun 1, 4, 7, 10, 13
-  const dates = [];
+  const text=await file.text();
+  const lines=text.trim().split(/\r?\n/).filter(l=>l.trim());
+  const hdr=lines[0].split(',');
+  const dates=[];
   for(let i=1;i<hdr.length;i+=3){
-    const v = hdr[i]?.trim();
-    if(v && v.toUpperCase()!=='SICAKLIK') dates.push(normDate(v));
+    const v=hdr[i]?.trim();
+    if(v&&v.toUpperCase()!=='SICAKLIK') dates.push(normDate(v));
   }
-
-  const imported = {};
+  const imported={};
   for(let r=1;r<lines.length;r++){
-    const cols   = lines[r].split(',');
-    const center = cols[0]?.trim().toUpperCase();
+    const cols=lines[r].split(',');
+    const center=cols[0]?.trim().toUpperCase();
     if(!center) continue;
-    imported[center] = {dates:{}};
+    imported[center]={dates:{}};
     for(let d=0;d<dates.length;d++){
-      const b    = 1+d*3;
-      const rawCond = cols[b]?.trim() || '';
-      const cond = COND_LABEL_TO_CODE[rawCond.toUpperCase()] || rawCond;
-      const lo   = parseInt(cols[b+1]);
-      const hi   = parseInt(cols[b+2]);
-      imported[center].dates[dates[d]] = {cond,lo,hi};
+      const b=1+d*3;
+      const rawCond=cols[b]?.trim()||'';
+      const cond=COND_LABEL_TO_CODE[rawCond.toUpperCase()]||rawCond;
+      imported[center].dates[dates[d]]={cond,lo:parseInt(cols[b+1]),hi:parseInt(cols[b+2])};
     }
   }
-  applyImportedData(imported, dates, file.name);
+  applyImportedData(imported,dates,file.name);
 }
 
-// ────────────────────────────────────────────────────────────────
-//  XLSX IMPORT  (SheetJS)
-// ────────────────────────────────────────────────────────────────
 async function importXLSX(file){
   if(typeof XLSX==='undefined') throw new Error('SheetJS yüklenemedi');
-  const buf  = await file.arrayBuffer();
-  const wb   = XLSX.read(buf, {type:'array'});
-  const ws   = wb.Sheets[wb.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
-
-  const hdr   = rows[0] || [];
-  const dates = [];
+  const buf=await file.arrayBuffer();
+  const wb=XLSX.read(buf,{type:'array'});
+  const ws=wb.Sheets[wb.SheetNames[0]];
+  const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+  const hdr=rows[0]||[];
+  const dates=[];
   for(let i=1;i<hdr.length;i+=3){
-    const v = String(hdr[i]||'').trim();
-    if(v && !v.match(/^(Min|Max|SICAKLIK)/i)) dates.push(normDate(v));
+    const v=String(hdr[i]||'').trim();
+    if(v&&!v.match(/^(Min|Max|SICAKLIK)/i)) dates.push(normDate(v));
   }
-
-  const imported = {};
+  const imported={};
   for(let r=1;r<rows.length;r++){
-    const cols   = rows[r];
-    const center = String(cols[0]||'').trim().toUpperCase();
+    const cols=rows[r];
+    const center=String(cols[0]||'').trim().toUpperCase();
     if(!center) continue;
-    imported[center] = {dates:{}};
+    imported[center]={dates:{}};
     for(let d=0;d<dates.length;d++){
-      const b    = 1+d*3;
-      const rawCond = String(cols[b]||'').trim();
-      // Uzun açıklama ise kısa koda çevir, yoksa olduğu gibi kullan
-      const cond = COND_LABEL_TO_CODE[rawCond.toUpperCase()] || rawCond;
-      const lo   = parseInt(cols[b+1]);
-      const hi   = parseInt(cols[b+2]);
-      imported[center].dates[dates[d]] = {cond,lo,hi};
+      const b=1+d*3;
+      const rawCond=String(cols[b]||'').trim();
+      const cond=COND_LABEL_TO_CODE[rawCond.toUpperCase()]||rawCond;
+      imported[center].dates[dates[d]]={cond,lo:parseInt(cols[b+1]),hi:parseInt(cols[b+2])};
     }
   }
-  applyImportedData(imported, dates, file.name);
+  applyImportedData(imported,dates,file.name);
 }
 
-// ────────────────────────────────────────────────────────────────
-//  DOCX IMPORT  (JSZip → word/document.xml → tablo parse)
-// ────────────────────────────────────────────────────────────────
 async function importDOCX(file){
   if(typeof JSZip==='undefined'){
     await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
   }
-  const buf  = await file.arrayBuffer();
-  const zip  = await JSZip.loadAsync(buf);
-  const xml  = await zip.file('word/document.xml').async('string');
-
-  const rows = [];
-  const rowMatches = xml.match(/<w:tr[ >][\s\S]*?<\/w:tr>/g) || [];
+  const buf=await file.arrayBuffer();
+  const zip=await JSZip.loadAsync(buf);
+  const xml=await zip.file('word/document.xml').async('string');
+  const rows=[];
+  const rowMatches=xml.match(/<w:tr[ >][\s\S]*?<\/w:tr>/g)||[];
   for(const row of rowMatches){
-    const cells = [];
-    const cellMatches = row.match(/<w:tc[ >][\s\S]*?<\/w:tc>/g) || [];
+    const cells=[];
+    const cellMatches=row.match(/<w:tc[ >][\s\S]*?<\/w:tc>/g)||[];
     for(const cell of cellMatches){
-      const texts = cell.match(/<w:t[^>]*>([^<]*)<\/w:t>/g) || [];
+      const texts=cell.match(/<w:t[^>]*>([^<]*)<\/w:t>/g)||[];
       cells.push(texts.map(t=>t.replace(/<[^>]+>/g,'')).join('').trim());
     }
     if(cells.length>1) rows.push(cells);
   }
-
-  if(rows.length<2){ setStatus('DOCX içinde tablo bulunamadı.','err'); return; }
-
-  const hdr   = rows[0];
-  const dates = [];
+  if(rows.length<2){setStatus('DOCX içinde tablo bulunamadı.','err');return;}
+  const hdr=rows[0];
+  const dates=[];
   for(let i=1;i<hdr.length;i+=3){
-    const v = hdr[i]?.trim()||'';
-    if(v && !v.match(/^(Min|Max|SICAKLIK)/i)) dates.push(normDate(v));
+    const v=hdr[i]?.trim()||'';
+    if(v&&!v.match(/^(Min|Max|SICAKLIK)/i)) dates.push(normDate(v));
   }
-
-  const imported = {};
+  const imported={};
   for(let r=1;r<rows.length;r++){
-    const cols   = rows[r];
-    const center = (cols[0]||'').trim().toUpperCase();
+    const cols=rows[r];
+    const center=(cols[0]||'').trim().toUpperCase();
     if(!center) continue;
-    imported[center] = {dates:{}};
+    imported[center]={dates:{}};
     for(let d=0;d<dates.length;d++){
-      const b    = 1+d*3;
-      const rawCond = (cols[b]||'').trim();
-      const cond = COND_LABEL_TO_CODE[rawCond.toUpperCase()] || rawCond;
-      const lo   = parseInt(cols[b+1]);
-      const hi   = parseInt(cols[b+2]);
-      imported[center].dates[dates[d]] = {cond,lo,hi};
+      const b=1+d*3;
+      const rawCond=(cols[b]||'').trim();
+      const cond=COND_LABEL_TO_CODE[rawCond.toUpperCase()]||rawCond;
+      imported[center].dates[dates[d]]={cond,lo:parseInt(cols[b+1]),hi:parseInt(cols[b+2])};
     }
   }
-  applyImportedData(imported, dates, file.name);
+  applyImportedData(imported,dates,file.name);
 }
 
-// ────────────────────────────────────────────────────────────────
-//  IMPORT ortak uygulama
-// ────────────────────────────────────────────────────────────────
 function normDate(v){
-  v = String(v).replace(/\s/g,'');
-  const m = v.match(/^(\d{1,2})\.(\d{1,2})\.(\d{2})$/);
+  v=String(v).replace(/\s/g,'');
+  const m=v.match(/^(\d{1,2})\.(\d{1,2})\.(\d{2})$/);
   if(m) return `${m[1].padStart(2,'0')}.${m[2].padStart(2,'0')}.20${m[3]}`;
   return v;
 }
-
-// Şehir adını normalize et (Türkçe karakter kaldır, büyük harf)
 function normCity(n){
   return n.toUpperCase()
     .replace(/İ/g,'I').replace(/Ğ/g,'G').replace(/Ü/g,'U')
     .replace(/Ş/g,'S').replace(/Ö/g,'O').replace(/Ç/g,'C');
 }
 
-function applyImportedData(imported, dates, fname){
-  IMPORT_DATES  = dates.slice(0,5);
-  IMPORT_SOURCE = 'file';
-  IMPORT_FNAME  = fname;
-
-  const impKeys = Object.keys(imported);
-  let matched = 0;
-  const needApi = [];
-
+function applyImportedData(imported,dates,fname){
+  IMPORT_DATES=dates.slice(0,5);
+  IMPORT_SOURCE='file'; IMPORT_FNAME=fname;
+  const impKeys=Object.keys(imported);
+  let matched=0;
+  const needApi=[];
   for(const city of ALL){
-    const k = key(city);
-    // Eşleştirme: normalize edilmiş ada göre
-    const normName = normCity(city.name);
-    // Kısa isim (ilk kelime)
-    const shortName = normName.split(' ')[0].substring(0,6);
-
-    let found = null;
-    // 1. Tam eşleşme
-    if(imported[normName]) found = imported[normName];
-    // 2. Kısmi prefix eşleşme
+    const k=key(city);
+    const normName=normCity(city.name);
+    const shortName=normName.split(' ')[0].substring(0,6);
+    let found=null;
+    if(imported[normName]) found=imported[normName];
     if(!found){
       for(const ik of impKeys){
-        if(ik.startsWith(shortName) || normName.startsWith(ik.substring(0,6))){
-          found = imported[ik]; break;
-        }
+        if(ik.startsWith(shortName)||normName.startsWith(ik.substring(0,6))){found=imported[ik];break;}
       }
     }
-
-    if(found && IMPORT_DATES.length){
-      const days = IMPORT_DATES.map(date => {
-        const d = found.dates[date];
-        return d ? {hi:d.hi, lo:d.lo, code:d.cond} : null;
+    if(found&&IMPORT_DATES.length){
+      const days=IMPORT_DATES.map(date=>{
+        const d=found.dates[date];
+        return d?{hi:d.hi,lo:d.lo,code:d.cond}:null;
       });
       if(days.some(Boolean)){
-        DATA[k] = {
-          ok:     true,
-          cond:   days.find(Boolean)?.code || '—',
-          days,
-          source: 'import'
-        };
-        matched++;
-        continue;
+        DATA[k]={ok:true,cond:days.find(Boolean)?.code||'—',days,source:'import'};
+        matched++; continue;
       }
     }
     needApi.push(city);
   }
 
-  buildTheadFromDates(IMPORT_DATES);
-  renderTable();
-  renderStats();
-  updateSourceIndicator();
+  // Thead güncelle
+  const MONTHS_=["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
+  const DAYS_=["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
+  const makeLabel=ds=>{
+    const [d,m,y]=ds.split('.').map(Number);
+    const dt=new Date(y,m-1,d);
+    const today=new Date(); today.setHours(0,0,0,0);
+    const diff=Math.round((dt-today)/86400000);
+    return{short:diff===0?'Bugün':diff===1?'Yarın':DAYS_[dt.getDay()],date:d+' '+MONTHS_[m-1]};
+  };
+  const mLabels=IMPORT_DATES.slice(0,4).map(makeLabel);
+  buildTheadMetro(mLabels);
+  const oLabels=IMPORT_DATES.slice(0,2).map(makeLabel);
+  buildTheadOther(oLabels[0],oLabels[1]);
 
-  const apiMsg = needApi.length ? ` · ${needApi.length} şehir API'den alınıyor` : '';
-  setStatus(`✓ ${fname} yüklendi — ${matched} şehir eşleşti${apiMsg}`, 'ok');
-
-  // Eşleşmeyen şehirleri API'den çek
+  renderTables(); renderStats(); updateSourceIndicator();
+  const apiMsg=needApi.length?` · ${needApi.length} şehir API'den alınıyor`:'';
+  setStatus(`✓ ${fname} yüklendi — ${matched} şehir eşleşti${apiMsg}`,'ok');
   for(const city of needApi) fetchCity(city);
 }
 
-// ════════════════════════════════════════════════════════════════
-//  EXPORT — aktif tarihleri döndür
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
+//  EXPORT
+// ══════════════════════════════════════════════
 function getActiveDates(){
   if(IMPORT_DATES) return IMPORT_DATES;
   const out=[];
@@ -790,141 +748,89 @@ function getActiveDates(){
   }
   return out;
 }
-
 function todayStr(){
   const d=new Date();
   return `${String(d.getDate()).padStart(2,'0')}${String(d.getMonth()+1).padStart(2,'0')}${d.getFullYear()}`;
 }
 
-// ────────────────────────────────────────────────────────────────
-//  EXPORT — TXT
-// ────────────────────────────────────────────────────────────────
 function exportTXT(){
-  const dates = getActiveDates();
-  const lines = [];
-  let hdr = 'MERKEZLER';
-  dates.forEach(d => hdr+=`,${d},SICAKLIK`);
-  // Aslında format: tarih,min,max — ama orijinal: durum,min,max
-  // Orijinal formata uy: tarih sütunu sonra durum,lo,hi
-  // Başlık düzeltmesi — orijinal dosyada SICAKLIK yerine sadece durum,lo,hi
-  hdr = 'MERKEZLER';
+  const dates=getActiveDates();
+  let hdr='MERKEZLER';
   dates.forEach(d=>hdr+=`,${d},SICAKLIK`);
-  lines.push(hdr);
-
+  const lines=[hdr];
   for(const city of ALL){
-    const d = DATA[key(city)];
+    const d=DATA[key(city)];
     if(!d?.ok) continue;
-    let row = normCity(city.name);
+    let row=normCity(city.name);
     for(let i=0;i<5;i++){
-      const dy = d.days?.[i];
-      row += dy ? `,${condLabel(dy.code||dy.cond||'')},${isNaN(dy.lo)?'':dy.lo},${isNaN(dy.hi)?'':dy.hi}` : `,,,`;
+      const dy=d.days?.[i];
+      row+=dy?`,${condLabel(dy.code||dy.cond||'')},${isNaN(dy.lo)?'':dy.lo},${isNaN(dy.hi)?'':dy.hi}`:`,,,`;
     }
     lines.push(row);
   }
-  const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
-  saveAs(blob, `meteor_${todayStr()}.txt`);
+  const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
+  saveAs(blob,`meteor_${todayStr()}.txt`);
   setStatus('✓ TXT dışa aktarıldı','ok');
 }
 
-// ────────────────────────────────────────────────────────────────
-//  EXPORT — XLSX  (SheetJS)
-// ────────────────────────────────────────────────────────────────
 function exportXLSX(){
-  if(typeof XLSX==='undefined'){ setStatus('SheetJS yüklenemedi','err'); return; }
-  const dates = getActiveDates();
-  const aoa   = [];
-  const hdr   = ['Merkezler'];
+  if(typeof XLSX==='undefined'){setStatus('SheetJS yüklenemedi','err');return;}
+  const dates=getActiveDates();
+  const aoa=[];
+  const hdr=['Merkezler'];
   for(let i=0;i<5;i++) hdr.push(dates[i]||'','Min'+(i+1),'Max'+(i+1));
   aoa.push(hdr);
-
   for(const city of ALL){
-    const d = DATA[key(city)];
+    const d=DATA[key(city)];
     if(!d?.ok) continue;
-    const row = [city.name];
+    const row=[city.name];
     for(let i=0;i<5;i++){
-      const dy = d.days?.[i];
-      const rawCode = dy?.code||dy?.cond||'';
-      const fullLabel = condLabel(rawCode);
-      row.push(fullLabel, isNaN(dy?.lo)?'':dy.lo, isNaN(dy?.hi)?'':dy.hi);
+      const dy=d.days?.[i];
+      row.push(condLabel(dy?.code||dy?.cond||''),isNaN(dy?.lo)?'':dy.lo,isNaN(dy?.hi)?'':dy.hi);
     }
     aoa.push(row);
   }
-
-  const ws = XLSX.utils.aoa_to_sheet(aoa);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'raporTahminler');
-  XLSX.writeFile(wb, `meteor_${todayStr()}.xlsx`);
+  const ws=XLSX.utils.aoa_to_sheet(aoa);
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,'raporTahminler');
+  XLSX.writeFile(wb,`meteor_${todayStr()}.xlsx`);
   setStatus('✓ XLSX dışa aktarıldı','ok');
 }
 
-// ────────────────────────────────────────────────────────────────
-//  EXPORT — DOCX  (docx.js UMD)
-// ────────────────────────────────────────────────────────────────
 async function exportDOCX(){
-  if(typeof docx==='undefined'){ setStatus('docx.js kütüphanesi yüklenemedi','err'); return; }
-  const {Document,Packer,Table,TableRow,TableCell,Paragraph,
-         TextRun,WidthType,AlignmentType} = docx;
-  const dates = getActiveDates();
-
+  if(typeof docx==='undefined'){setStatus('docx.js kütüphanesi yüklenemedi','err');return;}
+  const{Document,Packer,Table,TableRow,TableCell,Paragraph,TextRun,WidthType,AlignmentType}=docx;
+  const dates=getActiveDates();
   function hCell(text){
-    return new TableCell({
-      children:[new Paragraph({
-        children:[new TextRun({text,bold:true,size:16})],
-        alignment:AlignmentType.CENTER
-      })],
-      shading:{fill:'1F2937'}
-    });
+    return new TableCell({children:[new Paragraph({children:[new TextRun({text,bold:true,size:16})],alignment:AlignmentType.CENTER})],shading:{fill:'1F2937'}});
   }
-  function dCell(text, bold=false){
-    return new TableCell({
-      children:[new Paragraph({
-        children:[new TextRun({text:String(text||''),bold,size:16})],
-        alignment:AlignmentType.CENTER
-      })]
-    });
+  function dCell(text,bold=false){
+    return new TableCell({children:[new Paragraph({children:[new TextRun({text:String(text||''),bold,size:16})],alignment:AlignmentType.CENTER})]});
   }
-
-  const headerRow = new TableRow({children:[
-    hCell('Merkezler'),
-    ...dates.flatMap(d=>[hCell(d),hCell('Min'),hCell('Maks')])
-  ], tableHeader:true});
-
-  const dataRows = [];
+  const headerRow=new TableRow({children:[hCell('Merkezler'),...dates.flatMap(d=>[hCell(d),hCell('Min'),hCell('Maks')])],tableHeader:true});
+  const dataRows=[];
   for(const city of ALL){
-    const d = DATA[key(city)];
+    const d=DATA[key(city)];
     if(!d?.ok) continue;
-    const cells = [new TableCell({children:[new Paragraph({
-      children:[new TextRun({text:city.name,bold:true,size:16})]
-    })]})];
+    const cells=[new TableCell({children:[new Paragraph({children:[new TextRun({text:city.name,bold:true,size:16})]})]})]
     for(let i=0;i<5;i++){
-      const dy = d.days?.[i];
-      cells.push(
-        dCell(condLabel(dy?.code||dy?.cond||'')),
-        dCell(isNaN(dy?.lo)?'':dy.lo),
-        dCell(isNaN(dy?.hi)?'':dy.hi)
-      );
+      const dy=d.days?.[i];
+      cells.push(dCell(condLabel(dy?.code||dy?.cond||'')),dCell(isNaN(dy?.lo)?'':dy.lo),dCell(isNaN(dy?.hi)?'':dy.hi));
     }
     dataRows.push(new TableRow({children:cells}));
   }
-
-  const table = new Table({rows:[headerRow,...dataRows],
-    width:{size:100,type:WidthType.PERCENTAGE}});
-
-  const doc = new Document({sections:[{children:[
+  const table=new Table({rows:[headerRow,...dataRows],width:{size:100,type:WidthType.PERCENTAGE}});
+  const doc=new Document({sections:[{children:[
     new Paragraph({children:[new TextRun({text:'METEO_TR — 5 Günlük Tahmin',bold:true,size:32})]}),
     new Paragraph({children:[new TextRun({text:`Oluşturma: ${new Date().toLocaleString('tr-TR')}`,size:16,color:'888888'})]}),
     new Paragraph(''),
     table
   ]}]});
-
-  const blob = await Packer.toBlob(doc);
-  saveAs(blob, `meteor_${todayStr()}.docx`);
+  const blob=await Packer.toBlob(doc);
+  saveAs(blob,`meteor_${todayStr()}.docx`);
   setStatus('✓ DOCX dışa aktarıldı','ok');
 }
 
-// ────────────────────────────────────────────────────────────────
-//  YARDIMCI
-// ────────────────────────────────────────────────────────────────
 function loadScript(src){
   return new Promise((res,rej)=>{
     const s=document.createElement('script');
@@ -933,10 +839,11 @@ function loadScript(src){
   });
 }
 
-// ════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════
 //  INIT
-// ════════════════════════════════════════════════════════════════
-buildThead();
+// ══════════════════════════════════════════════
+buildTheadMetro();
+buildTheadOther();
 updateSourceIndicator();
 ALL.forEach(fetchCity);
 </script>
